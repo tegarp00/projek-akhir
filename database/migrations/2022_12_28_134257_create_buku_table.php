@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('jumlah_halaman');
             $table->integer('kuota');
             $table->string('file');
+            $table->string('image');
             $table->string('pengarang');
             $table->string('penerbit');
             $table->date('tahun_terbit');

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         User::query()->create([
             "name" => "tegar pratama",
-            "umur" => 21,
+            "tanggal_lahir" => '2001-03-14',
             "no_telephone" => "085275048404",
             "email" => "tegarp00@gmail.com",
             "alamat" => "cisitu",

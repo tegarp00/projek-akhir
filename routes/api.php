@@ -34,13 +34,19 @@ Route::put("/user/{id}/update", [UserController::class, "update"])->name('update
 Route::put("/user/{id}/delete", [UserController::class, "destroy"])->name('destroy')->middleware(['auth:sanctum', 'admin']);
 
 // admin
+Route::get("/databuku", [PenggunaController::class, "bookAvailable"])->name('bookAvailable')->middleware(['auth:sanctum', 'admin']);
 Route::post("/kategori", [AdminController::class, "createKategori"])->name('createKategori')->middleware(['auth:sanctum', 'admin']);
+Route::get("/kategori", [AdminController::class, "listKategori"])->name('listKategori')->middleware(['auth:sanctum', 'admin']);
 Route::post("/buku", [AdminController::class, "createBuku"])->name('createBuku')->middleware(['auth:sanctum', 'admin']);
 Route::get("/bukus", [AdminController::class, "detailBuku"])->name('detailBuku')->middleware(['auth:sanctum', 'admin']);
+Route::get("/laporan", [AdminController::class, "detailLaporan"])->name('detailLaporan')->middleware(['auth:sanctum', 'admin']);
+Route::get("/countlaporan", [AdminController::class, "laporanCount"])->name('laporanCount')->middleware(['auth:sanctum', 'admin']);
 Route::post("/buku/{id}/update", [AdminController::class, "updateBuku"])->name('updateBuku')->middleware(['auth:sanctum', 'admin']);
 Route::delete("/buku/{id}/delete", [AdminController::class, "deleteBuku"])->name('deleteBuku')->middleware(['auth:sanctum', 'admin']);
 
 // pengguna
 Route::get("/books", [PenggunaController::class, "bookAvailable"])->name('bookAvailable')->middleware(['auth:sanctum', 'user']);
-Route::post("/pinjambuku", [PenggunaController::class, "createBorrowingBook"])->name('createBorrowingBook')->middleware(['auth:sanctum', 'user']);
+Route::get("/cekstatus", [PenggunaController::class, "cekStatus"])->name('cekStatus')->middleware(['auth:sanctum', 'user']);
+// Route::post("/pinjambuku", [PenggunaController::class, "createBorrowingBook"])->name('createBorrowingBook')->middleware(['auth:sanctum', 'user']);
+Route::post("/peminjaman", [PenggunaController::class, "peminjaman"])->name('peminjaman')->middleware(['auth:sanctum', 'user']);
 Route::post("/detailPeminjaman", [PenggunaController::class, "createBorrowingDetail"])->name('createBorrowingDetail')->middleware(['auth:sanctum', 'user']);
