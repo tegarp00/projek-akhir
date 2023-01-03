@@ -40,6 +40,7 @@ class AuthController extends Controller
         $token = $auth['data']['auth']['token'];
         $token_type = $auth['data']['auth']['token_type'];
         session()->put("token", "$token_type $token");
+        session()->put("id_user", $auth['data']['user']['id']);
         session()->put("role", $auth['data']['user']['role']);
         session()->put("name", $auth['data']['user']['name']);
 
@@ -51,4 +52,37 @@ class AuthController extends Controller
         }
 
     }
+
+    public function createBuku(Request $request)
+    {
+        $payload = [
+            'id_kategori' => 1,
+            'judul' => $request->input("judul"),
+            'jumlah_halaman' => $request->input("jumlah_halaman"),
+            'kuota' => $request->input("kuota"),
+            'pengarang' => $request->input("pengarang"),
+            'penerbit' => $request->input("penerbit"),
+            'tahun_terbit' => $request->input("tahun_terbit"),
+            'author' => $request->input("author"),
+            'isbn' => $request->input("isbn"),
+        ];
+
+
+        $files = [
+            'file'=> $request->file('file'),
+            'image'=> $request->file('image'),
+        ];
+
+        // dd($files);
+        // $t1=HttpClient::fetch("POST", "http://localhost:8000/api/buku", $payload);
+        $t2=HttpClient::fetch("POST", "http://localhost:8000/api/buku", $payload, $files);
+
+        // dd($t2);
+        return redirect()->back();
+
+        // $author = HttpClient::fetch("POST", "http://localhost:8000/api/book", $payload);
+
+        // return redirect()->route("home");
+    }
+
 }

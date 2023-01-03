@@ -12,6 +12,14 @@
                     <a href="#" class="">Home</a>
                 </li>
                 <li>
+                    @if (session()->get('role') === 2)
+                        <a href="/dashboard/admin" class="">Dashboard</a>
+                    @endif
+                    @if (session()->get('role') === 1)
+                        <a href="/dashboard/user" class="">Dashboard</a>
+                    @endif
+                </li>
+                <li>
                     <a href="#" class="">Contact</a>
                 </li>
                 <li>
@@ -113,8 +121,8 @@
                             <input type="password" x-model="user.password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
                         <div>
-                            <label for="umur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Umur</label>
-                            <input type="number" x-model="user.umur" name="umur" id="umur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="21" required>
+                            <label for="tanggalLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
+                            <input type="date" x-model="user.tanggal_lahir" name="tanggal_lahir" id="umur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="21" required>
                         </div>
                         <div>
                             <label for="no-telephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Telepon</label>

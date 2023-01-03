@@ -1,5 +1,5 @@
     {{-- nav --}}
-    <div class="w-full bg-[#6477DB] border-[1px solid #000000]">
+    <div class="w-full drop-shadow-xl bg-[#6477DB] border-[1px solid #000000]">
         <div class="container flex items-center h-[74px] justify-between">
             <div class="flex items-center gap-[15px] h-[74px]">
                 <img class="w-[35px]" src="{{asset('icons/brand.svg')}}" alt="">
@@ -18,9 +18,9 @@
                             </div>
                             <div class="px-3 py-2">
                                 <ul>
-                                    <li class="mb-[10px]">
+                                    {{-- <li class="mb-[10px]">
                                         <a class="hover:text-[blue]" href="#">Profile</a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a class="hover:text-[red]" href="{{route('logout')}}">Logout</a>
                                     </li>
@@ -36,9 +36,23 @@
     {{-- nav-end --}}
     <div class="w-full h-[74px] bg-[#6476da] flex justify-center items-center border-b-[1px] border-b-[#1E1E1E] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] relative">
       <div class="bg-gradient-to-t from-black/0 to-black/10 w-full h-[20%] absolute top-0"></div>
-        <p class="text-[32px] text-[white] font-normal text-[500]">Laporan</p>
+
+        @if (session()->get('role') === 1)
+        <p class="text-[32px] text-[white] font-normal text-[500]"
+          x-text="pilihan =='list-buku' ? 'List Buku' : pilihan == 'list-pinjaman' ? 'Daftar Buku Pinjaman' : 'apalah'"
+        >
+        </p>
+        @endif
+
+        @if (session()->get('role') === 2)
+        <p class="text-[32px] text-[white] font-normal text-[500]"
+          x-text="title =='data-buku' ? 'Data Buku' : title == 'laporan' ? 'Laporan' : title == 'daftar-user' ? 'Daftar User' : ''"
+        >
+        </p>
+        @endif
+
     </div>
-  <div class="flex gap-[30px] bg-[#fbe7e7] max-h-[100vh] overflow-y-scroll">
+  <div class="flex gap-[30px] bg-[#fbe7e7]">
     <div class="mt-[-38px] bg-[white] w-[315px] h-[561px] ml-[30px] rounded-lg relative z-50">
       <div class="profil pt-[56px] absolute w-full">
         <div class="flex justify-center mb-[20px]">
@@ -58,32 +72,61 @@
           </p>
         </div>
         
-        <div class="ml-[35px]">
-
-          <a href="#" x-on:click="pilihan = 'data-buku'">
-          <div class="menu flex items-center">
+          @if (session()->get('role') === 2)
+          <a href="#" x-on:click="title = 'data-buku'">
+            <div class="ml-[35px]">
+              <div class="menu flex items-center">
             <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/dataBuku.svg')}}" alt="">
             <p>Data Buku</p>
           </div>
           </a>
-
+          
+          <a href="#" x-on:click="title = 'daftar-user'">
           <div class="menu flex items-center">
             <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/daftarAnggota.svg')}}" alt="">
             <p>Daftar User</p>
           </div>
+          </a>
           <div class="menu flex items-center">
             <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/transaksi.svg')}}" alt="">
             <p>Transaksi</p>
           </div>
           <div class="menu flex items-center">
             <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/laporan.svg')}}" alt="">
-            <p>Laporan</p>
+            @if (session()->get('role') === 2)
+            <a href="{{route('admin')}}">Laporan</a>
+            @endif
           </div>
         </div>
+        @endif
+
+        {{-- user --}}
+          @if (session()->get('role') === 1)
+          <a href="#" x-on:click="pilihan = 'list-buku'">
+            <div class="ml-[35px]">
+                <div class="menu flex items-center">
+              <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/dataBuku.svg')}}" alt="">
+              <p>List Buku</p>
+            </div>
+          </a>
+          <a href="#" x-on:click="pilihan = 'list-pinjaman'">
+            <div class="menu flex items-center">
+              <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/daftarAnggota.svg')}}" alt="">
+              <p>List Buku Pinjaman</p>
+            </div>
+          </a>
+          <div class="menu flex items-center">
+            <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/transaksi.svg')}}" alt="">
+            <p>Transaksi</p>
+          </div>
+          <div class="menu flex items-center">
+            <img class="w-[35px] mr-2 mb-[11px]" src="{{asset('icons/laporan.svg')}}" alt="">
+            <a href="">Laporan</a>
+          </div>
+        </div>
+          @endif
 
       </div>
     </div>
-    @if (session()->get('role') === 2)
-      @livewire('content-admin')
-    @endif
-  </div>
+      {{-- @livewire('addbook') --}}
+  {{-- </div> --}}
