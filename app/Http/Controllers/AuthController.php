@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         $auth = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/login",
+            "https://winter-night-241.fly.dev/api/login",
             $payload,
         );
 
@@ -75,7 +75,7 @@ class AuthController extends Controller
 
         // dd($files);
         // $t1=HttpClient::fetch("POST", "http://localhost:8000/api/buku", $payload);
-        $t2=HttpClient::fetch("POST", "http://localhost:8000/api/buku", $payload, $files);
+        $t2=HttpClient::fetch("POST", "https://winter-night-241.fly.dev/api/buku", $payload, $files);
 
         // dd($t2);
         return redirect()->back();

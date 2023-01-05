@@ -23,12 +23,12 @@ document.addEventListener('alpine:init', () => {
             formData.append('no_telephone', this.user.noTelephone)
             formData.append('alamat', this.user.alamat)
 
-            await fetch('http://localhost:8000/api/register', {
+            await fetch('https://winter-night-241.fly.dev/api/register', {
                 method: 'POST',
                 body: formData
             })
 
-            return window.location.replace('http://localhost:8001')
+            return window.location.replace('https://fenyaperpus.fly.dev')
 
         },
     }));
@@ -74,7 +74,7 @@ document.addEventListener('alpine:init', () => {
 
             this.loading = true
             
-            fetch('http://localhost:8000/api/buku', {
+            fetch('https://winter-night-241.fly.dev/api/buku', {
                     method: 'POST',
                     headers: {
                         'Authorization': token
@@ -89,7 +89,7 @@ document.addEventListener('alpine:init', () => {
                     this.loading = false
                 });
 
-                return window.location.replace('http://localhost:8001/addbook')
+                return window.location.replace('https://fenyaperpus.fly.dev/addbook')
 
             }
         })
@@ -97,7 +97,7 @@ document.addEventListener('alpine:init', () => {
         Alpine.data('kategori', () => ({
             data: [],
         async kategoris(token) {
-            let kategori = await fetch('http://localhost:8000/api/kategori', {
+            let kategori = await fetch('https://winter-night-241.fly.dev/api/kategori', {
                 method: 'get',
                 headers: {
                     'Authorization': `${token}`
@@ -121,7 +121,7 @@ document.addEventListener('alpine:init', () => {
 
             this.loading = true
             
-            fetch('http://localhost:8000/api/kategori', {
+            fetch('https://winter-night-241.fly.dev/api/kategori', {
                     method: 'POST',
                     headers: {
                         'Authorization': token
@@ -136,7 +136,7 @@ document.addEventListener('alpine:init', () => {
                     this.loading = false
                 });
 
-                return window.location.replace('http://localhost:8001/addcategori')
+                return window.location.replace('https://fenyaperpus.fly.dev/addcategori')
 
             }
         })
@@ -145,7 +145,7 @@ document.addEventListener('alpine:init', () => {
             data: [],
             laporan: [],
         async laporans(token) {
-            let kategori = await fetch('http://localhost:8000/api/laporan', {
+            let kategori = await fetch('https://winter-night-241.fly.dev/api/laporan', {
                 method: 'get',
                 headers: {
                     'Authorization': `${token}`
@@ -156,7 +156,7 @@ document.addEventListener('alpine:init', () => {
             },
 
         async countslaporan(token) {
-            let kategori = await fetch('http://localhost:8000/api/countlaporan', {
+            let kategori = await fetch('https://winter-night-241.fly.dev/api/countlaporan', {
                 method: 'get',
                 headers: {
                     'Authorization': `${token}`
@@ -171,7 +171,7 @@ document.addEventListener('alpine:init', () => {
         Alpine.data('books', () => ({
             data: [],
         async books(token) {
-            let kategori = await fetch('http://localhost:8000/api/books', {
+            let kategori = await fetch('https://winter-night-241.fly.dev/api/books', {
                 method: 'get',
                 headers: {
                     'Authorization': `${token}`
@@ -185,7 +185,7 @@ document.addEventListener('alpine:init', () => {
         Alpine.data('buku', () => ({
             data: [],
         async buku(token) {
-            let kategori = await fetch('http://localhost:8000/api/databuku', {
+            let kategori = await fetch('https://winter-night-241.fly.dev/api/databuku', {
                 method: 'get',
                 headers: {
                     'Authorization': `${token}`
@@ -199,7 +199,7 @@ document.addEventListener('alpine:init', () => {
         Alpine.data('users', () => ({
             data: [],
         async users(token) {
-            let kategori = await fetch('http://localhost:8000/api/users', {
+            let kategori = await fetch('https://winter-night-241.fly.dev/api/users', {
                 method: 'get',
                 headers: {
                     'Authorization': `${token}`
@@ -225,7 +225,7 @@ document.addEventListener('alpine:init', () => {
 
             // this.loading = true
             
-            fetch('http://localhost:8000/api/peminjaman', {
+            fetch('https://winter-night-241.fly.dev/api/peminjaman', {
                     method: 'POST',
                     headers: {
                         'Authorization': token
@@ -263,7 +263,7 @@ document.addEventListener('alpine:init', () => {
 
             // this.loading = true
             
-            let pjm = await fetch('http://localhost:8000/api/peminjaman', {
+            let pjm = await fetch('https://winter-night-241.fly.dev/api/peminjaman', {
                     method: 'POST',
                     headers: {
                         'Authorization': token
@@ -278,7 +278,7 @@ document.addEventListener('alpine:init', () => {
                 this.statusPinjam = hasil.data
                 this.status = true
 
-                window.location.href='http://localhost:8001/dashboard/user'
+                window.location.href='https://winter-night-241.fly.dev/dashboard/user'
 
             },
 

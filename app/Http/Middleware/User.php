@@ -22,7 +22,7 @@ class User
         if(Session::has("token")) {
             $auth = HttpClient::fetch(
                 "GET",
-                "http://localhost:8000/api/me"
+                "https://winter-night-241.fly.dev/api/me"
             );
             if(!$auth) {
                 return redirect("/");

@@ -43,7 +43,7 @@
                         <template x-if="localStorage.getItem(`stop-click/${buku.id}`)">
                         <div>
                             <a href="#">
-                                <img class="h-[400px] rounded-t-lg" x-bind:src="'http://localhost:8000/storage/' + buku.image" alt="" />
+                                <img class="h-[400px] rounded-t-lg" x-bind:src="'https://fenyaperpus.fly.dev/storage/' + buku.image" alt="" />
                             </a>
                             <div class="p-5">
                                 <a href="#">

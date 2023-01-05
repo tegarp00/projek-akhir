@@ -12,7 +12,7 @@
             <template x-for="buku, i in data" :key="buku.id">
                 <div x-data="pinjam" x-init="statusPinjam(buku.id)" class="max-w-[230px] bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
-                        <img class="rounded-t-lg" x-bind:src="'http://localhost:8000/storage/' + buku.image" alt="" />
+                        <img class="rounded-t-lg" x-bind:src="'https://fenyaperpus.fly.dev/storage/' + buku.image" alt="" />
                     </a>
                 <div class="p-5">
                     <a href="#">
